@@ -3,39 +3,32 @@ import './style.css';
 import Todo from "../todo/Todo";
 
 const List = (props) => {
-    // console.log(props.content[0].id)
+    console.log(props)
     return (
         <div className="list-container">
             <p className="text"> Working... 🔥</p>
             <div>
-                {props.content.map((con, idx) => { 
-                    return (
-                        con.isDone == false?
-                            <Todo className="working-box" setContent={props.setContent} container={props.content} title={con.title}
-                               con={con} content={con.content} myId={con.id} key={idx} idx={idx} isDone={con.isDone} />
-                        : null
-                        )
-                }
-                )}
-               
-                
+                {props.contents.map((content, idx) => { 
+                    console.log(content.isDone)
+                    if (content.isDone === false) {
+                        return (
+                            <Todo className="working-box" setContents={props.setContents} container={props.contents}
+                                doneButton={content.doneButton} title={content.title} mapContent={content} body={content.body}
+                                key={idx} isDone={content.isDone} />
+                        )} 
+                })} 
             </div>
 
             <p className="text">Done ..! 🎉</p>
             <div>
-                    {/* {props.content.map((con, key) => {
+                {props.contents.map((content, idx) => { 
+                    if (content.isDone === true) {
                         return (
-                            <Todo className="working-box" title={con.title} content={con.content} mykey={key} />
-                         )}
-                    )} */}
-                {props.content.filter((con, idx) => {
-                    return (
-                        con.isDone == true ?  
-                            <Todo className="working-box" container={props.content} title={con.title} content={con.content} myId={con.id} key={idx} idx={idx} isDone={con.isDone} />
-                        : null
-                    )
-                })
-                }
+                        <Todo className="working-box" setContents={props.setContents} container={props.contents}
+                            doneButton={content.doneButton} title={content.title} mapContent={content} body={content.body}
+                            key={idx} isDone={content.isDone} />
+                        )} 
+                })}
             </div>
 
         </div>

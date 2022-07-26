@@ -14,11 +14,12 @@ const Header = (props) => {
     }
     const addContent = () => {
         let data = {
+            id: props.contents.length,
             ...inputs,
-            id: props.content.length,
             isDone: false,
+            doneButton: '완료'
         }
-        props.setContent([...props.content, data])
+        props.setContents([...props.contents, data])
     }
     return (
         <div className="headers">
@@ -29,7 +30,7 @@ const Header = (props) => {
                 </div>
                 <div className="inputs-content">
                     <p>내용</p>
-                    <input onChange={onChange} name='content' type='text' ></input>
+                    <input onChange={onChange} name='body' type='text' ></input>
                 </div>
             </div>
             <button onClick={addContent}>추가하기</button>

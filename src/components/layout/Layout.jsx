@@ -5,18 +5,19 @@ import Header from "../header/Header";
 import List from "../list/List";
 
 const Layout = () => {
-    const [content, setContent] = useState([{
+    const [contents, setContents] = useState([{
             id:0,
             title: '리액트 공부하기',
-            content: '리액트 기초를 공부한다',
+            body: '리액트 기초를 공부한다',
             isDone: false,
+            doneButton: '완료'
         }]);
-    // console.log(content[0].isDone)
+    console.log(contents)
     return (
         <div className="layout">
             <Form />
-            <Header setContent={setContent} content={content} />
-            <List setContent={setContent}  content={content} />
+            <Header setContents={setContents} contents={contents} />
+            <List setContents={setContents}  contents={contents} />
          </div>
     )
 }
