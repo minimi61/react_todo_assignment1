@@ -3,37 +3,44 @@ import './style.css';
 import Todo from "../todo/Todo";
 
 const List = (props) => {
-    // console.log(props.content)
+    // console.log(props.content[0].id)
     return (
         <div className="list-container">
             <p className="text"> Working... 🔥</p>
             <div>
-                {/* <div className="working-box">
-                    <h3>리액트 공부하기</h3>
-                    <p>리액트 기초를 공부한다</p>
-                    <div className="list-buttons">
-                        <button type="button">삭제하기</button>
-                        <button type="button">완료</button>
-                    </div>
-                </div> */}
-                <Todo className="working-box" content={props.content} />
+                {props.content.map((con, idx) => { 
+                    return (
+                        con.isDone == false?
+                            <Todo className="working-box" setContent={props.setContent} container={props.content} title={con.title}
+                               con={con} content={con.content} myId={con.id} key={idx} idx={idx} isDone={con.isDone} />
+                        : null
+                        )
+                }
+                )}
+               
+                
             </div>
-            
+
             <p className="text">Done ..! 🎉</p>
             <div>
-               
-                <div className="working-box">
-                    <h3>리액트 공부하기</h3>
-                    <p>리액트 기초를 공부한다</p>
-                    <div className="list-buttons">
-                        <button type="button">삭제하기</button>
-                        <button type="button">취소</button>
-                    </div>
-                </div>
+                    {/* {props.content.map((con, key) => {
+                        return (
+                            <Todo className="working-box" title={con.title} content={con.content} mykey={key} />
+                         )}
+                    )} */}
+                {props.content.filter((con, idx) => {
+                    return (
+                        con.isDone == true ?  
+                            <Todo className="working-box" container={props.content} title={con.title} content={con.content} myId={con.id} key={idx} idx={idx} isDone={con.isDone} />
+                        : null
+                    )
+                })
+                }
             </div>
-           
-         </div>
+
+        </div>
     )
 }
 
 export default List;
+

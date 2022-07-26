@@ -1,39 +1,31 @@
 import React, { useState } from "react";
-import { useRef } from "react";
+// import { useRef } from "react";
 import './style.css';
 
 const Header = (props) => {
-    // console.log(props)
-    const [inputs, setInputs] = useState([]);
-    const [ arr1 ,setArr1 ] = useState([]) 
-
+    const [inputs, setInputs] = useState();
+    
     const onChange = (e) => {
-        const {  name,value } = e.target;
+        const { name, value } = e.target;
         setInputs({
             ...inputs,
-             [name] :value
-      
+            [name]: value,
         })
-        console.log(inputs)
     }
-    const arr = [];
-
     const addContent = () => {
-        arr.push({
-            title: inputs.title,
-            content : inputs.content
-        })
-        // props.setContent(arr)
-        setArr1(arr)
+        let data = {
+            ...inputs,
+            id: props.content.length,
+            isDone: false,
+        }
+        props.setContent([...props.content, data])
     }
-    console.log(arr1)
-
     return (
         <div className="headers">
             <div className="inputs">
                 <div className="inputs-title">
                     <p>제목</p>
-                    <input onChange={onChange} name='title' type='text' ></input>
+                    <input onChange={onChange} name='title' type='text'  ></input>
                 </div>
                 <div className="inputs-content">
                     <p>내용</p>
@@ -43,7 +35,7 @@ const Header = (props) => {
             <button onClick={addContent}>추가하기</button>
         </div>
     )
-    
+
 }
 
 export default Header;
@@ -59,3 +51,10 @@ export default Header;
     //     // console.log(e.target.value);
     //     setContentValue(e.target.value)
     // }
+
+            // // arr.push({
+        //     title: inputs.title,
+        //     content : inputs.content
+        // })
+        // // props.setContent(arr)
+        // setArr1(arr)
