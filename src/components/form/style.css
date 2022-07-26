@@ -1,0 +1,9 @@
+.toptag {
+    display: flex;
+    justify-content: space-between;
+    /* max-width: 70vw; */
+    border: 1px solid #eee;
+    /* margin: 0 auto; */
+    padding: 0.5rem;
+    border-radius: 5px;
+}
