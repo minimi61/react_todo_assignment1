@@ -40,22 +40,3 @@ const Header = (props) => {
 }
 
 export default Header;
-// value={contentValue}
-
-    // const [titleValue, setTitleValue] = useState('');
-    // const onChange = (e) => {
-    //     // console.log(e.target.value);
-    //     setTitleValue(e.target.value)
-    // }
-    // const [contentValue, setContentValue] = useState('')
-    // const onChangeContent = (e) => {
-    //     // console.log(e.target.value);
-    //     setContentValue(e.target.value)
-    // }
-
-            // // arr.push({
-        //     title: inputs.title,
-        //     content : inputs.content
-        // })
-        // // props.setContent(arr)
-        // setArr1(arr)

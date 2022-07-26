@@ -28,7 +28,7 @@ const Todo = ({ container, title, mapContent, setContents, body,doneButton }) =>
                 return newState
             }
         })
-       console.log(changeIsDone)
+    //    console.log(changeIsDone)
         setContents([...container, changeIsDone]);
     }
 

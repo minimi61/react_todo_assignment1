@@ -12,7 +12,7 @@ const Layout = () => {
             isDone: false,
             doneButton: '완료'
         }]);
-    console.log(contents)
+    // console.log(contents)
     return (
         <div className="layout">
             <Form />
