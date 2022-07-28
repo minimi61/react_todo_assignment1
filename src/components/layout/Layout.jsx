@@ -11,6 +11,12 @@ const Layout = () => {
             body: '리액트 기초를 공부한다',
             isDone: false,
             doneButton: '완료'
+        },{
+            id:1,
+            title: '리액트 공부하기',
+            body: '리액트 기초를 공부한다',
+            isDone: true,
+            doneButton: '완료'
         }]);
     // console.log(contents)
     return (

@@ -3,13 +3,13 @@ import './style.css';
 import Todo from "../todo/Todo";
 
 const List = (props) => {
-    // console.log(props)
+    console.log(props.contents)
     return (
         <div className="list-container">
             <p className="text"> Working... 🔥</p>
             <div>
                 {props.contents.map((content, idx) => { 
-                    // console.log(content.isDone)
+                    // console.log(content)
                     if (content.isDone === false) {
                         return (
                             <Todo className="working-box" setContents={props.setContents} container={props.contents}
@@ -20,8 +20,10 @@ const List = (props) => {
             </div>
 
             <p className="text">Done ..! 🎉</p>
+
             <div>
                 {props.contents.map((content, idx) => { 
+
                     if (content.isDone === true) {
                         return (
                         <Todo className="working-box" setContents={props.setContents} container={props.contents}

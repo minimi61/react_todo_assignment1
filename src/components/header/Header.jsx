@@ -19,18 +19,22 @@ const Header = (props) => {
             isDone: false,
             doneButton: '완료'
         }
-        props.setContents([...props.contents, data])
+        props.setContents([...props.contents, data]);
+        const inputId = document.getElementById('inputId');
+        const inputContent = document.getElementById('inputContent');
+        inputId.value = '';
+        inputContent.value=''
     }
     return (
         <div className="headers">
             <div className="inputs">
                 <div className="inputs-title">
                     <p>제목</p>
-                    <input onChange={onChange} name='title' type='text'  ></input>
+                    <input id="inputId" onChange={onChange} name='title' type='text'  ></input>
                 </div>
                 <div className="inputs-content">
                     <p>내용</p>
-                    <input onChange={onChange} name='body' type='text' ></input>
+                    <input id="inputContent" onChange={onChange} name='body' type='text' ></input>
                 </div>
             </div>
             <button onClick={addContent}>추가하기</button>
