@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './style.css';
 
 
-const Todo = ({ container, title, mapContent, setContents, body,doneButton }) => {
+const Todo = ({ container, title, mapContent, setContents, body, isDone }) => {
     
   // console.log(title, body)
   const deleted = () => {
@@ -14,22 +14,13 @@ const Todo = ({ container, title, mapContent, setContents, body,doneButton }) =>
   };
 
   //완료버튼
-    const finished = () => {
-      const changeIsDone = [...container].map((newState) => {
-          //버튼이 취소일 때 
-        if (newState.id === mapContent.id && newState.doneButton === '취소') {
-          newState.isDone = false;
-          newState.doneButton = '완료';
-          return newState
-        } 
-        //완료버튼을 누를때
-        if (newState.id === mapContent.id) {
-          newState.isDone = true;
-          newState.doneButton = '취소';
-          return newState
-        } else {return newState}
-        })
-        setContents(changeIsDone);
+  const finished = () => {
+
+    setContents([...container].map((todo) =>
+      todo.id === mapContent.id ? { ...todo, isDone: !todo.isDone } 
+      : todo
+     ));
+
     }
 
     return (
@@ -42,7 +33,7 @@ const Todo = ({ container, title, mapContent, setContents, body,doneButton }) =>
             삭제하기
           </button>
           <button type="button" onClick={finished}>
-            {doneButton}
+            {isDone == false? '완료': '취소'}
           </button>
         </div>
       </div>
@@ -50,48 +41,25 @@ const Todo = ({ container, title, mapContent, setContents, body,doneButton }) =>
   );
 };
 export default Todo;
-// import React,{useState} from "react";
-// import './style.css';
 
 
-// const Todo = (props) => {
-//     // console.log(props)
-//     const [doneChange, setDonechange] = useState(false);
+//위와 같은 내용
 
-//     const deleted = () => {
-//         let newContent = [...props.container];
-//         newContent.map((content) => {
-//             // console.log('test0',props.con.id !== content.id)
-//             if (props.con.id !== content.id) {
-//                 return content ;
-//             } 
-            
-//         })
-//         console.log('test', newContent, props.con)
-//         props.setContent(newContent)
-//     }
-
-//     const finished = () => {
-//         console.log('완료');
-//         // setDonechange(true)
-//     }
-//     // console.log(props.doneChange)
-
-//     return (
-//         <div>
-//             <div className="working-box">
-//                 <h3>{props.title}</h3>
-//                 <p>{props.content}</p> 
-//                 <div className="list-buttons">
-//                     <button type="button" onClick={deleted}>삭제하기</button>
-//                     <button type="button" onClick={finished}>완료</button>
-//                 </div>
-//             </div>
-//         </div>
-      
-//     )
-// }
-
-// export default Todo;
-
-
+  // const changeIsDone = [...container].map((newState) => {
+      //버튼이 취소일 때 
+    // if (newState.id === mapContent.id && newState.doneButton === '취소') {
+    //   newState.isDone = false;
+    //   newState.doneButton = '완료';
+    //   return newState
+    // } 
+    // //완료버튼을 누를때
+    
+    // if (newState.id === mapContent.id) {
+    //   newState.isDone = true;
+    //   newState.doneButton = '취소';
+    //   return newState
+    // } else {return newState}
+    
+    // })
+    // setContents(changeIsDone);
+        
